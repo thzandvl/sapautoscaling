@@ -1,55 +1,55 @@
 #ResourceGroup to deploy resources related to autoscaling
-rgname = "sapautoscale-test1"
+rgname = "MSFTdemo-sapautoscale-app"
 #Location to deploy resources related to autoscaling
-location = "WestEurope"
+location = "westus2"
 #Storage account name to be used for autoscaling config
-storageaccount = "sapautoscalestorage12"
+storageaccount = "msftdemosapautoscale"
 #Automation account name to be used for autoscaling
-automationaccount = "sapautoscale12"
+automationaccount = "sbx-sap-autoscale"
 #Name of the LogicApp to be used for logon group registration
-logicapp-sapregister = "logicapp-sapregister12"
+logicapp-sapregister = "s4s-la-autoscale"
 #SAP System ID for which autoscaling is configured. 
-sapsid = "TST"
+sapsid = "S4S"
 #Email recepient to receive notifications related to autoscaling
-alertrecepient = "kavenka@microsoft.com"
+alertrecepient = "thzandvl@microsoft.com"
 #Name of the Onprem data gateway to be used by logicapp SAP connector. This should already be installed and configured
-odgname = "kvscalinggw"
+odgname = "mgmt-gw-sap"
 #Resource group of the Onprem data gateway
-odgresourcegroup = "kvsapautoscaling"
+odgresourcegroup = "MSFTdemo-mgmt-rg"
 #Location of the Onprem data gateway
-odglocation = "WestCentralUS"
+odglocation = "westus2"
 #Instance number of the SAP system to be configured for autoscaling
-sapinstnacenr = 00
+sapinstnacenr = 43
 #SAP User to be used by logon group registration logic app
-sapregisteruser = "demouser"
+sapregisteruser = "bpinst"
 #SAP System Client number
 sapclient = "000"
 #SAP Message server host. This will be used to configure RFC connection to be used by logic app SAP connector
-sapmshost = "172.16.3.6"
+sapmshost = "10.100.10.51"
 #SAP message server port. This will be used to configure RFC connection to be used by logic app SAP connector
-sapmsport = "3600"
+sapmsport = "3641"
 #SAP Logongroup. This will be used to configure RFC connection to be used by logic app SAP connector
-saplogongroup = "PUBLIC"
+saplogongroup = "SAPS4S"
 #Config below will be populated within a table in Storage account. They can be modified later after deployment as well.
 scalingconfig = {
      sap1 = {
 CurrentAppCount = 1
 MaxAppCount = 4
 MinAppAcount = 1
-SAPAppLoadBalancer = "app-lb"
-SAPAppNamingPrefix = "tst-app-avm-"
+SAPAppLoadBalancer = "sbx-lb-int"
+SAPAppNamingPrefix = "sbx-s4s-app"
 SAPAppVmSize = "Standard_D2s_v3"
-SAPCustomImageid = "/subscriptions/afbba066-2190-4c21-b9ec-4a945b7bfbcc/resourceGroups/sap-images-rg/providers/Microsoft.Compute/galleries/s4hana1809.sles12/images/SAP-APP"
+SAPCustomImageid = "/subscriptions/8cebd71f-7e8c-42ef-947e-22724cb103e4/resourceGroups/MSFTdemo-mgmt-rg/providers/Microsoft.Compute/galleries/msftdemoimages/images/sbx-s4hana-app-image"
 SAPDeleteTimeout = 10
-SAPImageHostName = "tst-app-avm-0"
-SAPInstanceNr = 00
-SAPLogonGroups = "PUBLIC,TEST"
-SAPRegion = "NorthEurope"
-SAPResourceGroup = "SAP-Hack-Demo"
-SAPServerGroups = "parallel_generators,TESTSERVERGROUP"
+SAPImageHostName = "sbx-s4s-app3"
+SAPInstanceNr = 43
+SAPLogonGroups = "PUBLIC,SAPS4S"
+SAPRegion = "westus2"
+SAPResourceGroup = "MSFTdemo-sapautoscale"
+SAPServerGroups = "parallel_generators"
 SAPShutdownTimeout = 10
-SAPAvSet = "APP-AVSET"
-SAPSubnet = "sap-subnet"
-SAPVnet = "sap-vnet"
+SAPAvSet = ""
+SAPSubnet = "app-sbx"
+SAPVnet = "MSFTdemo-vnet"
 }
 }
